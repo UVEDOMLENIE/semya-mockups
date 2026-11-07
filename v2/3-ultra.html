@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>«СемьЯ» — УЛЬТРА-МЕГА</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  :root {
+    --bg: #0D0618; --card: #1C0F33; --ink: #FFF6FD; --muted: #C9B6E8; --line: #4B2A7A;
+    --accent: #FF2E93; --on-accent: #0D0618; --good: #12391F; --warn: #3D2A07; --r: 18px;
+    --font: "Segoe UI", Arial, sans-serif; --head: Impact, "Arial Black", sans-serif;
+  }
+  body { background: radial-gradient(circle at 20% 0%, #3A0F5E 0, #0D0618 55%); background-attachment: fixed; }
+  .marquee { overflow: hidden; white-space: nowrap; background: #FFE600; color: #0D0618; font-family: var(--head); font-size: 18px; padding: 6px 0; margin: -16px -16px 16px; }
+  .marquee span { display: inline-block; animation: run 12s linear infinite; }
+  @keyframes run { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .mega { font-family: var(--head); font-size: 54px; line-height: .95; margin: 8px 0 10px; text-transform: uppercase; letter-spacing: 1px;
+          background: linear-gradient(90deg, #FF2E93, #FFE600, #29F3FF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { font-size: 20px; }
+  .btn { font-family: var(--head); font-size: 24px; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 0 24px #FF2E93aa; animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 50% { transform: scale(1.03); box-shadow: 0 0 40px #FF2E93; } }
+  .btn.ghost { animation: none; box-shadow: none; }
+  .stickers { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+  .stickers span { background: var(--card); border: 2px solid #29F3FF; color: #29F3FF; border-radius: 99px; padding: 6px 12px; font-weight: 700; transform: rotate(-2deg); }
+  .stickers span:nth-child(even) { border-color: #FFE600; color: #FFE600; transform: rotate(2deg); }
+  h2 { font-family: var(--head); text-transform: uppercase; font-size: 34px; color: #FFE600; margin: 4px 0 8px; }
+  .q-text { font-family: var(--head); text-transform: uppercase; font-size: 30px; color: #29F3FF; }
+  .q-opt { font-weight: 700; font-size: 18px; }
+  .q-opt:hover { background: #FF2E93; color: #0D0618; }
+  .p-item { border: 2px solid #FF2E93; }
+  .p-theme { color: #FFE600; font-size: 15px; }
+  .card { border: 3px solid #FFE600; box-shadow: 0 0 20px #FFE60055; position: relative; }
+  .card header { background: linear-gradient(90deg, #FF2E93, #8A2BE2); color: #fff; font-family: var(--head); font-size: 26px; text-transform: uppercase; }
+  .meter { padding: 10px 16px 4px; }
+  .meter .lbl { font-family: var(--head); color: #FFE600; letter-spacing: 1px; }
+  .meter .bar { height: 16px; border-radius: 8px; background: #2A1A47; overflow: hidden; margin-top: 4px; }
+  .meter .bar i { display: block; height: 100%; background: linear-gradient(90deg, #29F3FF, #FF2E93, #FFE600); }
+  .lot { position: absolute; top: 8px; right: 12px; font-family: var(--head); font-size: 14px; background: #FFE600; color: #0D0618; padding: 2px 8px; border-radius: 6px; transform: rotate(4deg); }
+  .card .same { background: #12391F; } .card .talk { background: #3D2A07; }
+  .zags { display: block; margin: 8px 16px 14px; padding: 12px; text-align: center; border-radius: 12px; background: #29F3FF; color: #0D0618; font-family: var(--head); font-size: 20px; text-transform: uppercase; border: 0; width: calc(100% - 32px); }
+  .confetti { position: fixed; top: -20px; z-index: 40; width: 10px; height: 14px; pointer-events: none; animation: fall linear forwards; }
+  @keyframes fall { to { transform: translateY(110vh) rotate(720deg); } }
+  .bug { background: #FFE600; color: #0D0618; font-weight: 700; }
+  .field input, .field select, .seg button { background: #1C0F33; color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="marquee"><span>★ ХВАТИТ СВАЙПАТЬ ★ ПОРА ЖЕНИТЬСЯ ★ 7 ЧЕЛОВЕК, А НЕ 7000 ★ ДЕТИ · ДЕНЬГИ · МАМА · ССОРЫ ★ ХВАТИТ СВАЙПАТЬ ★ ПОРА ЖЕНИТЬСЯ ★ 7 ЧЕЛОВЕК, А НЕ 7000 ★ ДЕТИ · ДЕНЬГИ · МАМА · ССОРЫ ★&nbsp;</span></div>
+
+  <section data-screen="start">
+    <div class="mega">Хватит свайпать.<br>Пора жениться.</div>
+    <p class="sub">💍 Знакомства, где сначала спрашивают про детей, деньги и маму — а потом уже про любимый фильм.</p>
+    <div class="stickers"><span>7 человек, не 7000</span><span>% с объяснением</span><span>без свайпов</span><span>сразу о главном</span></div>
+    <button class="btn" data-go="anketa">Найти свою половину 🔥</button>
+    <p class="note">* совпадение — подсказка, а не приговор. Под венец всё равно сам(а).</p>
+  </section>
+
+  <section data-screen="anketa">
+    <h2>Кто ты, герой?</h2>
+    <div class="field"><label>Как тебя звать</label><input placeholder="Имя или ник"></div>
+    <div class="field"><label>Ты</label><div class="seg"><button data-gender="w" class="sel">Невеста 👰</button><button data-gender="m">Жених 🤵</button></div></div>
+    <div class="field"><label>Год рождения</label><input value="1985"></div>
+    <div class="field"><label>Регион</label><select><option>Тверская область</option><option>Москва</option><option>Питер</option></select></div>
+    <button class="btn" data-go="quiz">Погнали ⚡</button>
+  </section>
+
+  <section data-screen="quiz"><div id="quiz"></div></section>
+
+  <section data-screen="portrait">
+    <h2>Твой семейный вайб</h2>
+    <div id="portrait"></div>
+    <button class="btn" data-go="cards">Показать моих 7 🎯</button>
+  </section>
+
+  <section data-screen="cards">
+    <h2>Твоя великолепная семёрка</h2>
+    <p class="note">Все люди выдуманные. Совпадение выше 50%, иначе не показываем.</p>
+    <div id="cards"></div>
+    <button class="btn ghost" data-go="start">Ещё раз с начала</button>
+  </section>
+</div>
+<script>
+  const ICON = { 'дети': '👶', 'деньги': '💰', 'родители': '👵', 'ссоры': '⚡' };
+  window.VARIANT = {
+    id: 'ultra', title: 'УЛЬТРА-МЕГА', bugLabel: '🐞 Нашёл баг!',
+    quizMeta: (i, n, t) => `УРОВЕНЬ ${i + 1}/${n} · ${ICON[t] || ''} ${t.toUpperCase()}`,
+    emptyText: 'Никого выше 50%. Не страшно: настоящая база будет больше 🤞',
+    card: (p, m, i, esc) => `<article class="card"><span class="lot">ЛОТ №${i + 1}</span><header><b>${esc(p.name)}, ${2026 - p.year}</b></header>
+      <div class="meter"><span class="lbl">СВАДЬБОМЕТР: ${m.pct}%</span><div class="bar"><i style="width:${m.pct}%"></i></div></div>
+      <p class="fam">«${esc(p.fam)}»</p>
+      <p><span>📍</span> ${esc(p.region)} · ${esc(p.job)}</p><p><span>🏠</span> ${esc(p.status)}</p>
+      ${m.same.length ? `<p class="same">✅ Совпали: ${m.same.map((t) => (ICON[t] || '') + ' ' + t).join(', ')}</p>` : ''}
+      ${m.talk.length ? `<p class="talk">🗣 Обсудить на свидании: ${m.talk.map((t) => (ICON[t] || '') + ' ' + t).join(', ')}</p>` : ''}
+      <button class="zags" type="button">Написать первым 💌</button></article>`,
+    afterCards: () => {
+      const colors = ['#FF2E93', '#FFE600', '#29F3FF', '#8A2BE2'];
+      for (let k = 0; k < 60; k++) {
+        const c = document.createElement('i'); c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw'; c.style.background = colors[k % 4];
+        c.style.animationDuration = 1.5 + Math.random() * 2 + 's'; c.style.animationDelay = Math.random() * .6 + 's';
+        document.body.appendChild(c); setTimeout(() => c.remove(), 4500);
+      }
+    },
+  };
+</script>
+<script src="app.js"></script>
+</body>
+</html>

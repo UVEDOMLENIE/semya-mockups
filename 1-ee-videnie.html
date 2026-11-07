@@ -3,158 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>«СемьЯ» — её видение</title>
+<title>«СемьЯ» — ваша версия</title>
 <link rel="stylesheet" href="base.css">
 <style>
-  :root {
-    --bg: #F7F3EA; --card: #FFFFFF; --ink: #1F2A44; --muted: #6B7084; --line: #D9D3C4;
-    --accent: #23407A; --on-accent: #FFFFFF; --good: #E8F0E3; --warn: #FBF0DA; --r: 10px;
-    --font: Georgia, "Times New Roman", serif; --head: Georgia, "Times New Roman", serif;
-  }
+  :root { --bg: #F7F3EA; --card: #FFFFFF; --ink: #1F2A44; --muted: #6B7084; --line: #D9D3C4; --accent: #23407A; --on-accent: #FFFFFF;
+          --good: #E8F0E3; --warn: #FBF0DA; --r: 10px; --font: Georgia, "Times New Roman", serif; --head: Georgia, "Times New Roman", serif; }
   .top { text-align: center; padding: 18px 0 6px; border-bottom: 3px double var(--accent); margin-bottom: 16px; }
-  .logo { font-size: 40px; color: var(--accent); margin: 0; letter-spacing: 1px; }
-  .logo b { color: #A23B3B; }
+  .logo { font-size: 40px; color: var(--accent); margin: 0; letter-spacing: 1px; } .logo b { color: #A23B3B; }
   .motto { font-style: italic; margin: 4px 0 0; color: var(--muted); }
-  .doc { background: var(--card); border: 1px solid var(--line); padding: 16px; border-radius: 4px; box-shadow: 0 2px 0 var(--line); }
-  .doc h2 { color: var(--accent); font-size: 22px; margin: 0 0 10px; }
-  .imp { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); margin-top: 4px; }
-  .test { display: flex; justify-content: space-between; gap: 10px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
-  .test small { color: var(--muted); display: block; }
-  .test .st { font-size: 13px; color: var(--muted); white-space: nowrap; }
-  .test .st.go { color: var(--accent); font-weight: 700; }
-  .ph { background: repeating-linear-gradient(45deg, #F2EEE4, #F2EEE4 8px, #EAE4D6 8px, #EAE4D6 16px); border-radius: var(--r); padding: 14px 16px; margin-bottom: 10px; color: var(--muted); font-size: 15px; }
-  .ph b { color: var(--ink); }
-  .plan { display: flex; justify-content: space-between; align-items: center; border: 1.5px solid var(--line); border-radius: var(--r); padding: 14px 16px; margin-bottom: 10px; background: var(--card); }
-  .plan.best { border-color: var(--accent); }
-  .plan span { color: var(--muted); font-size: 14px; }
+  .doc { background: var(--card); border: 1px solid var(--line); padding: 16px; border-radius: 4px; box-shadow: 0 2px 0 var(--line); margin-bottom: 12px; }
+  .doc h2, .h { color: var(--accent); font-size: 22px; margin: 0 0 10px; } .h { margin-top: 8px; }
+  .doc h3 { color: var(--accent); margin: 18px 0 6px; font-size: 18px; } .center { text-align: center; color: var(--accent); }
   .stamp { display: inline-block; border: 2px solid #A23B3B; color: #A23B3B; padding: 2px 8px; transform: rotate(-3deg); font-size: 13px; margin-bottom: 10px; }
-  .post { background: #FFFDF7; border: 1px solid var(--line); border-radius: 6px; padding: 22px 18px 18px; margin: 0 0 22px; text-align: center;
-          box-shadow: 0 1px 0 #fff inset, 0 10px 22px rgba(35,64,122,.10); position: relative; }
-  .post::before { content: ""; position: absolute; inset: 7px; border: 1.5px solid #E6DCC6; border-radius: 3px; pointer-events: none; }
-  .post-frame { position: relative; width: 92px; margin: 0 auto 10px; }
-  .post-photo { width: 92px; height: 92px; border-radius: 50%; background: linear-gradient(135deg, #DCE4F2, #F3E5D6); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--accent);
-                display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--accent); }
-  .post-seal { position: absolute; right: -22px; bottom: -4px; width: 50px; height: 50px; border-radius: 50%; background: #A23B3B; color: #fff; font-weight: 700;
-               display: flex; align-items: center; justify-content: center; font-size: 15px; transform: rotate(-8deg); box-shadow: 0 3px 8px rgba(0,0,0,.2); }
-  .post h3 { margin: 4px 0 0; font-size: 26px; color: var(--accent); }
-  .post-lead { margin: 2px 0 10px; font-size: 13px; color: var(--muted); }
-  .post-quote { font-style: italic; font-size: 19px; color: #A23B3B; margin: 8px 6px 12px; }
-  .post-facts { font-size: 15px; color: var(--ink); margin: 0 0 8px; }
-  .post-about { font-size: 15px; color: var(--muted); margin: 0 0 12px; }
-  .post-btns { display: flex; gap: 8px; justify-content: center; }
-  .post-btns span { border: 1.5px solid var(--accent); color: var(--accent); border-radius: 99px; padding: 6px 14px; font-size: 14px; }
+  .imp { display: flex; align-items: flex-start; gap: 6px; font-size: 13px; color: var(--muted); margin-top: 6px; } .imp small { display: block; font-size: 12px; }
+  .imp.big { font-size: 16px; color: var(--ink); margin: 10px 0; }
+  .field select { margin-bottom: 6px; } .field textarea { width: 100%; font: inherit; padding: 10px; border: 1.5px solid var(--line); border-radius: 7px; margin-top: 6px; }
+  .hide { display: none; }
+  .bmi { margin: 6px 0 0; font-size: 15px; }
+  .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; font-size: 15px; }
+  .photos { display: flex; gap: 10px; margin: 6px 0 12px; } .phbox { flex: 1; border: 1.5px dashed var(--line); border-radius: 8px; padding: 14px 8px; text-align: center; color: var(--muted); font-size: 15px; }
+  .phbox.ini { font-size: 34px; color: var(--accent); } .phbox small { font-size: 12px; }
+  .test { display: flex; justify-content: space-between; gap: 10px; width: 100%; text-align: left; padding: 12px 0; border: 0; border-bottom: 1px dashed var(--line); background: none; color: var(--ink); }
+  .test small { color: var(--muted); display: block; font-size: 14px; } .st { font-size: 14px; white-space: nowrap; } .st.go { color: var(--accent); font-weight: 700; } .st.ok { color: #4F8A3F; }
+  .res { margin: 4px 0 6px; font-size: 14px; color: #4F8A3F; } .prog { font-weight: 700; color: var(--accent); }
+  .scale { display: flex; gap: 6px; } .scale .q-opt { text-align: center; padding: 14px 0; }
+  .sv { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid #EEE8DA; font-size: 15px; } .sv span { color: var(--muted); } .sv b { text-align: right; font-weight: 400; }
+  .legend { font-size: 12px; margin: 2px 0 0; } .zod { background: var(--warn); padding: 10px 12px; border-radius: 6px; }
+  .counts { display: flex; gap: 6px; } .counts button { flex: 1; padding: 12px 0; border: 1.5px solid var(--line); background: var(--card); border-radius: 7px; font-size: 18px; }
+  .counts button.sel { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .plan { display: flex; justify-content: space-between; align-items: center; border: 1.5px solid var(--line); border-radius: var(--r); padding: 14px 16px; margin-bottom: 10px; background: var(--card); }
+  .plan.best { border-color: var(--accent); } .plan span { color: var(--muted); font-size: 14px; }
+  .btn[disabled] { opacity: .45; }
+  /* карточка — по её образцу №4 */
+  .kcard { background: #FFFDF7; border: 1px solid var(--line); border-radius: 6px; padding: 16px; margin: 0 0 18px; box-shadow: 0 10px 22px rgba(35,64,122,.10); position: relative; }
+  .kcard.prev { border-style: dashed; }
+  .k-num { font-family: "Courier New", monospace; font-size: 13px; color: var(--muted); letter-spacing: 2px; }
+  .k-head { display: flex; align-items: center; gap: 12px; margin: 8px 0; } .k-head h3 { margin: 0; font-size: 26px; color: var(--accent); }
+  .k-photo { flex: 0 0 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #DCE4F2, #F3E5D6); box-shadow: 0 0 0 2px var(--accent); display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--accent); }
+  .k-phrase { font-size: 15px; margin: 6px 0; } .k-phrase b { color: #A23B3B; font-size: 20px; }
+  .k-axes { font-size: 13px; color: var(--muted); margin: 0 0 10px; } .k-axes small { font-size: 12px; }
+  .k-quote { font-style: italic; font-size: 18px; color: #A23B3B; border-top: 1px solid #EEE8DA; border-bottom: 1px solid #EEE8DA; padding: 8px 0; margin-bottom: 8px; }
+  .k-quote small { display: block; font-style: normal; font-size: 12px; color: var(--muted); }
+  details summary { color: var(--accent); font-weight: 700; padding: 8px 0; cursor: pointer; }
+  .ok { color: #4F8A3F; } .doc.ok { background: var(--good); }
+  .inbox { display: block; width: 100%; padding: 14px; margin: 6px 0 12px; border: 2px solid #A23B3B; color: #A23B3B; background: #fff; border-radius: var(--r); font-size: 17px; font-weight: 700; }
+  .msg { font-size: 17px; } .two { display: flex; gap: 8px; } .two .btn { margin: 6px 0; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top"><p class="logo">Семь<b>Я</b></p><p class="motto">Мы не для свиданий. Мы для создания семьи.</p></div>
-
-  <section data-screen="start">
-    <div class="doc">
-      <h2>Добро пожаловать</h2>
-      <p>Наша цель — помочь вам найти спутника жизни для создания семьи. Поэтому анкеты будут большими.</p>
-      <p>Для точного электронного портрета и хорошего результата отвечайте правдиво.</p>
-      <p>Компьютер определяет близость жизненных принципов и убеждений, совпадение базовых ценностей, психологической гибкости и физиологической гармонии.</p>
-      <p><i>Описание совместимости — это ориентир, а не истина в первой инстанции.</i></p>
-      <p class="note">Вы не ищете сами. Вы заполняете анкету и тесты, а мы подбираем до 7 человек, с кем совпадение больше 50%.</p>
-    </div>
-    <button class="btn" data-go="consent">Начать регистрацию</button>
-  </section>
-
-  <section data-screen="consent">
-    <div class="doc">
-      <h2>Согласие на обработку данных</h2>
-      <p>Анкета содержит личные сведения. Мы используем их только для подбора и показываем другим людям только то, что вы отметите.</p>
-      <p class="note">В настоящем сайте здесь будет полный текст согласия, составленный юристом.</p>
-      <label class="imp" style="font-size:16px;color:var(--ink)"><input type="checkbox" checked> Я согласен(на) на обработку персональных данных</label>
-    </div>
-    <button class="btn" data-go="anketa">Далее</button>
-  </section>
-
-  <section data-screen="anketa">
-    <div class="doc">
-      <span class="stamp">Анкета 1</span>
-      <h2>Личные данные</h2>
-      <p class="note">Галочка «важно для меня» — параметр учитывается при подборе.</p>
-      <div class="field"><label>Имя или ник</label><input placeholder="Например, Ольга"></div>
-      <div class="field"><label>Пол</label><div class="seg"><button data-gender="w" class="sel">Женский</button><button data-gender="m">Мужской</button></div></div>
-      <div class="field"><label>Дата рождения (18+)</label><input type="date" value="1985-05-12"></div>
-      <div class="field"><label>Место рождения</label><input placeholder="Город"></div>
-      <div class="field"><label>Религия</label><select><option>Не указывать</option><option>Православие</option><option>Ислам</option><option>Другое</option></select><label class="imp"><input type="checkbox"> важно для меня</label></div>
-      <div class="field"><label>Регион проживания</label><select><option>Тверская область</option><option>Москва</option><option>Санкт-Петербург</option><option>…все 89 субъектов</option></select></div>
-      <div class="field"><label>Национальность</label><input><label class="imp"><input type="checkbox"> важно для меня</label></div>
-      <div class="field"><label>Образование</label><select><option>Высшее</option><option>Среднее профессиональное</option><option>Несколько высших</option><option>Незаконченное высшее</option></select><label class="imp"><input type="checkbox"> важно для меня</label></div>
-      <div class="field"><label>Род занятий</label><select><option>Интеллектуальный труд</option><option>Социальный труд</option><option>Физический труд</option><option>Творческий труд</option><option>Организационно-управленческий</option></select></div>
-      <div class="field"><label>Рост, см / вес, кг</label><div class="seg"><input value="168" style="flex:1"><input value="62" style="flex:1"></div><label class="imp"><input type="checkbox"> важно для меня</label></div>
-      <div class="field"><label>Телосложение</label><select><option>Эктоморф — худощавое</option><option>Мезоморф — атлетическое</option><option>Эндоморф — округлое</option></select></div>
-      <div class="field"><label>Семейный статус</label><select><option>Нет браков, детей нет</option><option>1 брак, 1 ребёнок</option><option>2 брака, 2 детей</option></select></div>
-      <div class="field"><label>Коротко о себе (для карточки)</label><select><option>«Ценю в людях доброту, пунктуальность и умение держать слово»</option><option>«Умею создавать уют вокруг себя»</option><option>Написать самому…</option></select></div>
-      <div class="field"><label>Высказывание о семье (для карточки)</label><select><option>«Семья — это не главное. Это всё»</option><option>«Семейный круг — безопасная гавань»</option><option>«Семья — это сердце дома»</option></select></div>
-      <div class="field"><label>Контакты для знакомства (выберите 2)</label><select><option>WhatsApp и телефон</option><option>Телеграм и почта</option><option>ВКонтакте и Макс</option></select></div>
-    </div>
-    <button class="btn" data-go="tests">Сохранить и перейти к тестам</button>
-  </section>
-
-  <section data-screen="tests">
-    <div class="doc">
-      <h2>Тесты</h2>
-      <p>5 тестов, 123 вопроса, около 30 минут. Можно проходить по одному.</p>
-      <div class="test"><div>Определение темперамента<small>20 вопросов, 5 минут</small></div><span class="st">в макете нет</span></div>
-      <div class="test"><div>Опросник «Большая пятёрка»<small>40 вопросов, 10 минут</small></div><span class="st">в макете нет</span></div>
-      <div class="test"><div>Индекс эмпатии<small>28 вопросов, 7 минут</small></div><span class="st">в макете нет</span></div>
-      <div class="test"><div>Ревность<small>15 вопросов, 3 минуты</small></div><span class="st">в макете нет</span></div>
-      <div class="test"><div>Совпадение ценностей<small>в макете — 8 вопросов о семье</small></div><span class="st go">пройти →</span></div>
-      <p class="note">Тексты пяти тестов пока не прислали. В макете работает только короткий тест о ценностях семьи.</p>
-    </div>
-    <button class="btn" data-go="quiz">Пройти тест «Совпадение ценностей»</button>
-  </section>
-
-  <section data-screen="quiz"><div class="doc" id="quiz"></div></section>
-
-  <section data-screen="portrait">
-    <h2 style="color:var(--accent)">Анкета пользователя базовая</h2>
-    <p class="note">Свод анкеты и тестов. Это видите только вы.</p>
-    <div class="ph"><b>Темперамент:</b> появится после теста «Определение темперамента»</div>
-    <div class="ph"><b>Психотип:</b> появится после «Большой пятёрки»</div>
-    <div class="ph"><b>Эмпатия · Ревность:</b> появятся после тестов</div>
-    <div class="ph"><b>График биоритмов · Гороскоп:</b> заполняются автоматически по дате рождения</div>
-    <h3>Жизненные ценности</h3>
-    <div id="portrait"></div>
-    <button class="btn" data-go="sub">Подать заявку на подбор</button>
-  </section>
-
-  <section data-screen="sub">
-    <h2 style="color:var(--accent)">Подписка</h2>
-    <p>Подбор идёт из имеющейся базы. С ростом базы растёт шанс совместимости, поэтому удобнее подписка на период.</p>
-    <div class="plan"><b>3 месяца</b><span>цена — решает заказчица</span></div>
-    <div class="plan best"><b>6 месяцев</b><span>цена — решает заказчица</span></div>
-    <div class="plan"><b>9 месяцев</b><span>цена — решает заказчица</span></div>
-    <div class="plan"><b>12 месяцев</b><span>цена — решает заказчица</span></div>
-    <p class="note">В макете оплаты нет: кнопка сразу показывает подбор.</p>
-    <button class="btn" data-go="cards">Показать подбор</button>
-  </section>
-
-  <section data-screen="cards">
-    <h2 style="color:var(--accent)">Ваш подбор</h2>
-    <p class="note">До 7 человек, у кого совпадение больше 50%. Все люди выдуманные. Кому написать — решаете вы.</p>
-    <div id="cards"></div>
-    <button class="btn ghost" data-go="start">В начало</button>
-  </section>
+  <div id="app"></div>
 </div>
-<script>
-  window.VARIANT = {
-    id: 'ee-videnie', title: 'Её видение',
-    quizMeta: (i, n, t) => `Тест «Совпадение ценностей» · вопрос ${i + 1} из ${n}`,
-    card: (p, m, i, esc) => `<article class="post">
-      <div class="post-frame"><div class="post-photo">${esc(p.name[0])}</div><div class="post-seal">${m.pct}%</div></div>
-      <h3>${esc(p.name)}</h3>
-      <p class="post-lead">близость жизненных принципов, ценностей и гармонии с вами</p>
-      <p class="post-quote">«${esc(p.fam)}»</p>
-      <p class="post-facts">${p.year} г. р. · ${esc(p.region)}<br>${esc(p.job)} · ${esc(p.status)}</p>
-      <p class="post-about">${esc(p.about)}</p>
-      <div class="post-btns"><span>💬 WhatsApp</span><span>📞 Телефон</span></div></article>`,
-  };
-</script>
-<script src="app.js"></script>
+<script src="people.js"></script>
+<script src="notes.js"></script>
+<script src="v1.js"></script>
 </body>
 </html>

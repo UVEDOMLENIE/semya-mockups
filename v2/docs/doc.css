@@ -1,0 +1,21 @@
+:root { --bg: #FFFCF7; --ink: #2B2321; --muted: #6E625C; --line: #E9DDCD; --berry: #8E2C48; --berry-soft: #F6E7EB; --gold: #B9853A; --gold-soft: #FBF1E1; --green-soft: #EAF1EC; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Segoe UI", -apple-system, Roboto, Arial, sans-serif; font-size: 18px; line-height: 1.5; }
+.wrap { max-width: 520px; margin: 0 auto; padding: 18px 16px 60px; }
+a { color: var(--berry); }
+.back { display: inline-block; margin-bottom: 14px; text-decoration: none; font-size: 15px; }
+.kicker { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+h1 { font-family: Georgia, serif; color: var(--berry); font-size: 32px; line-height: 1.12; margin: 4px 0 10px; }
+h2 { font-family: Georgia, serif; font-size: 23px; margin: 30px 0 10px; padding-top: 14px; border-top: 1px solid var(--line); }
+.lead { font-size: 19px; color: var(--muted); }
+.quote { font-family: Georgia, serif; font-style: italic; font-size: 20px; color: var(--berry); border-left: 3px solid var(--gold); padding: 4px 0 4px 14px; margin: 16px 0; }
+.box { border-radius: 16px; padding: 14px 16px; margin: 12px 0; background: var(--gold-soft); }
+.box.berry { background: var(--berry-soft); } .box.green { background: var(--green-soft); }
+.box b { display: block; font-family: Georgia, serif; font-size: 19px; margin-bottom: 2px; }
+.step { display: flex; gap: 12px; margin: 14px 0; }
+.step .n { flex: 0 0 34px; height: 34px; border-radius: 50%; background: var(--berry); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.step b { display: block; color: var(--berry); }
+.tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 99px; background: #fff; border: 1px solid var(--line); color: var(--muted); margin: 0 4px 4px 0; }
+.src { font-size: 14px; color: var(--muted); }
+ul { padding-left: 20px; } li { margin-bottom: 8px; }
+.foot { margin-top: 36px; font-size: 14px; color: var(--muted); text-align: center; }

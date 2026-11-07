@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>«СемьЯ» — один человек в день</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  :root { --bg: #F4F1EC; --card: #FFFFFF; --ink: #22302B; --muted: #6D766F; --line: #DCD8CF; --accent: #2F5D50; --on-accent: #fff;
+          --good: #E3EEE8; --warn: #F6ECDC; --r: 14px; --font: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; --head: Georgia, "Times New Roman", serif; }
+  .wrap { padding-bottom: 130px; }
+  .brand { font-family: var(--head); font-size: 30px; color: var(--accent); margin: 8px 0 0; } .brand b { color: #B5654A; }
+  .hero h1 { font-size: 27px; margin: 14px 0; } .hero.sm h2 { margin-top: 18px; }
+  .three { list-style: none; padding: 0; margin: 18px 0; } .three li { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; margin-bottom: 8px; }
+  .small { font-size: 13px; color: var(--muted); }
+  .kick { font-size: 13px; letter-spacing: .5px; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 14px 0 6px; }
+  .link { background: none; border: 0; color: var(--muted); padding: 8px 0; font-size: 15px; }
+  /* собеседование */
+  .chat-head { position: sticky; top: 0; background: var(--bg); padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; z-index: 5; }
+  .chat-head b { font-family: var(--head); color: var(--accent); font-size: 20px; } .chat-head small { color: var(--muted); }
+  .chat { display: flex; flex-direction: column; gap: 8px; padding: 12px 0; }
+  .b { max-width: 84%; margin: 0; padding: 10px 14px; border-radius: 16px 16px 16px 4px; background: var(--card); border: 1px solid var(--line); align-self: flex-start; }
+  .b.me { align-self: flex-end; background: #DCEBE2; border-color: #C6DCCF; border-radius: 16px 16px 4px 16px; }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+  .chip { padding: 10px 14px; border-radius: 99px; border: 1.5px solid var(--accent); background: var(--card); color: var(--accent); font-size: 16px; text-align: left; }
+  .chip.sel { background: var(--accent); color: #fff; }
+  .say { display: flex; gap: 8px; margin: 8px 0; } .say input, .say select { flex: 1; padding: 12px; font: inherit; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; }
+  .say button { width: 52px; border: 0; border-radius: 12px; background: var(--accent); color: #fff; font-size: 20px; }
+  /* портрет-письмо */
+  .letter { background: #FFFDF8; border: 1px solid var(--line); border-radius: var(--r); padding: 18px; font-family: var(--head); font-size: 18px; line-height: 1.5; }
+  .letter h2 { font-size: 22px; margin: 0 0 12px; } .letter h3 { font-family: var(--font); font-size: 15px; color: var(--accent); margin: 16px 0 4px; }
+  .letter ul { padding-left: 20px; margin: 0; font-size: 16px; } .letter.sm { font-size: 16px; }
+  /* сегодня */
+  .dayline { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 14px; margin: 6px 0 12px; }
+  .dots { display: flex; gap: 5px; } .dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); } .dots i.past { background: #9FB8AE; } .dots i.now { background: var(--accent); }
+  .one { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; box-shadow: 0 10px 26px rgba(0,0,0,.06); }
+  .who { display: flex; gap: 14px; align-items: center; } .who h2 { margin: 0; font-size: 26px; } .who small { color: var(--muted); font-size: 14px; }
+  .who .ava { flex: 0 0 64px; height: 64px; font-size: 30px; } .who.sm { margin: 4px 0 14px; } .who.sm .ava { flex-basis: 44px; height: 44px; font-size: 20px; }
+  .ava { border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--head); }
+  .why { background: var(--good); border-radius: 12px; padding: 4px 14px 12px; margin: 16px 0 10px; } .why p:last-child { margin: 0; }
+  .one blockquote { font-family: var(--head); font-style: italic; font-size: 19px; color: #8A4B36; margin: 12px 0; }
+  .line { font-size: 14px; color: var(--muted); }
+  .two { display: flex; gap: 8px; } .two .btn { margin: 6px 0; }
+  .pair { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; margin-bottom: 8px; }
+  .pair small { color: var(--muted); } .pair div { display: flex; justify-content: space-between; gap: 10px; margin-top: 4px; flex-wrap: wrap; }
+  .sum { background: var(--warn); border-radius: 12px; padding: 10px 14px; }
+  .plate { background: var(--warn); border-radius: 12px; padding: 12px 14px; margin: 8px 0; } .plate.ok { background: var(--good); } .plate span { display: inline-block; margin: 4px 8px 0 0; }
+  .talkbox { min-height: 120px; }
+  .row { display: flex; gap: 12px; align-items: center; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; }
+  .row .ava { flex: 0 0 44px; height: 44px; font-size: 20px; } .row small { display: block; color: var(--muted); }
+  .tabs { position: fixed; left: 0; right: 0; bottom: 0; display: flex; background: #fff; border-top: 1px solid var(--line); z-index: 40; padding-bottom: env(safe-area-inset-bottom); }
+  .tabs button { flex: 1; border: 0; background: none; padding: 14px 4px; color: var(--muted); font-size: 15px; } .tabs button.on { color: var(--accent); font-weight: 700; box-shadow: inset 0 3px 0 var(--accent); }
+  .bug { bottom: 70px; }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script src="people.js"></script>
+<script src="notes.js"></script>
+<script src="v2.js"></script>
+</body>
+</html>
