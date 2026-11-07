@@ -3,26 +3,172 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>«СемьЯ» — три макета</title>
+<title>«СемьЯ» — три взгляда на одну идею</title>
+<link rel="stylesheet" href="base.css">
 <style>
-  body { margin: 0; background: #F4F1EC; color: #2B2A28; font-family: "Segoe UI", Arial, sans-serif; }
-  .wrap { max-width: 480px; margin: 0 auto; padding: 24px 16px; }
-  h1 { font-family: Georgia, serif; margin: 0 0 6px; }
-  p { color: #6E6860; }
-  a { display: block; text-decoration: none; color: inherit; border-radius: 16px; padding: 18px; margin: 14px 0; }
-  a b { display: block; font-size: 20px; margin-bottom: 4px; }
-  .v1 { background: #FFFFFF; border: 2px solid #23407A; } .v1 b { color: #23407A; font-family: Georgia, serif; }
-  .v2 { background: #FFFFFF; border: 2px solid #8E4A3A; } .v2 b { color: #8E4A3A; }
-  .v3 { background: #0D0618; color: #FFF6FD; border: 2px solid #FFE600; } .v3 b { color: #FF2E93; font-family: Impact, "Arial Black", sans-serif; text-transform: uppercase; }
+  :root {
+    --bg: #FFFAF3; --card: #FFFFFF; --ink: #2B2321; --muted: #6E625C; --line: #EADFCF;
+    --accent: #8E2C48; --on-accent: #FFFFFF; --good: #EAF1EC; --warn: #FBF1E1; --r: 18px;
+    --font: "Segoe UI", -apple-system, Roboto, Arial, sans-serif; --head: Georgia, "Times New Roman", serif;
+  }
+  body { font-size: 18px; }
+  .wrap { max-width: 520px; }
+  .hero { text-align: center; padding: 26px 0 8px; }
+  .hero svg { width: 120px; }
+  .kicker { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #B9853A; }
+  .hero h1 { font-size: 40px; color: var(--accent); margin: 4px 0 8px; }
+  .hero p { color: var(--muted); font-size: 19px; margin: 0 auto; max-width: 400px; }
+  .scroll { margin-top: 18px; color: #B9853A; font-size: 15px; animation: bob 1.8s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(5px); } }
+  .ch { margin: 46px 0 0; }
+  .ch-n { font-family: var(--head); font-size: 15px; color: #B9853A; letter-spacing: 1px; }
+  .ch h2 { font-size: 30px; margin: 2px 0 12px; color: var(--ink); }
+  .bubble { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 20px 20px 20px 6px; padding: 14px 16px; margin: 12px 0 12px 46px; box-shadow: 0 4px 14px rgba(0,0,0,.05); }
+  .bubble::before { content: "🐙"; position: absolute; left: -46px; bottom: -2px; font-size: 32px; }
+  .panels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0; }
+  .panel { background: var(--card); border: 2px solid var(--ink); border-radius: 10px; padding: 10px 6px; text-align: center; font-size: 14px; line-height: 1.25; box-shadow: 3px 3px 0 var(--ink); }
+  .panel i { display: block; font-style: normal; font-size: 30px; margin-bottom: 4px; }
+  .variant { border-radius: 26px; padding: 18px 16px 16px; margin: 16px 0; }
+  .variant h3 { font-size: 26px; margin: 0 0 4px; }
+  .variant .sub { margin: 0 0 12px; }
+  .v-her { background: #F2EEE3; } .v-her h3 { color: #23407A; }
+  .v-calm { background: #F7EEE9; } .v-calm h3 { color: #8E4A3A; }
+  .v-ultra { background: #0D0618; color: #FFF6FD; } .v-ultra h3 { color: #FF2E93; font-family: Impact, "Arial Black", sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+  .phone { width: 228px; height: 440px; margin: 6px auto 14px; border-radius: 32px; background: #1A1A1A; padding: 10px; box-shadow: 0 14px 30px rgba(0,0,0,.25); }
+  .phone .screen { width: 100%; height: 100%; border-radius: 24px; overflow: hidden; background: #fff; position: relative; }
+  .phone iframe { width: 375px; height: 724px; border: 0; transform: scale(.5547); transform-origin: 0 0; }
+  .row { display: flex; gap: 8px; }
+  .row .btn { margin: 0; font-size: 16px; padding: 13px 10px; }
+  .v-her .btn { background: #23407A; } .v-her .btn.ghost { background: transparent; color: #23407A; border-color: #23407A; }
+  .v-calm .btn { background: #8E4A3A; } .v-calm .btn.ghost { background: transparent; color: #8E4A3A; border-color: #8E4A3A; }
+  .v-ultra .btn { background: #FFE600; color: #0D0618; } .v-ultra .btn.ghost { background: transparent; color: #FFE600; border-color: #FFE600; }
+  .name { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; margin: 10px 0; }
+  .name b { font-family: var(--head); font-size: 24px; color: var(--accent); display: block; }
+  .name i { display: block; color: var(--muted); margin: 2px 0 6px; }
+  .name small { display: block; color: var(--muted); font-size: 14px; }
+  .plan { position: relative; padding-left: 58px; margin: 18px 0; }
+  .plan .L { position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: 12px; background: var(--accent); color: #fff; font-family: var(--head); font-size: 24px; display: flex; align-items: center; justify-content: center; }
+  .plan b { display: block; font-size: 19px; }
+  .who { display: inline-block; font-size: 13px; border-radius: 99px; padding: 2px 9px; margin: 4px 4px 0 0; background: var(--warn); }
+  .who.us { background: var(--good); }
+  .frame-note { background: var(--accent); color: #fff; border-radius: 18px; padding: 14px 16px; margin: 18px 0; }
+  .docs a { display: flex; gap: 12px; align-items: center; text-decoration: none; color: inherit; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 14px; margin: 10px 0; }
+  .docs a i { font-style: normal; font-size: 30px; }
+  .docs a b { display: block; color: var(--accent); }
+  .docs a span { font-size: 15px; color: var(--muted); }
+  .pick .btn { text-align: left; }
+  .end { text-align: center; color: var(--muted); font-size: 15px; margin-top: 40px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>«СемьЯ» — три макета</h1>
-  <p>Кликабельные макеты первой рабочей версии. Люди выдуманные, ничего никуда не отправляется. Справа внизу — кнопка «Замечание».</p>
-  <a class="v1" href="1-ee-videnie.html"><b>1. Её видение</b>Как в её документах: полная анкета с «важно для меня», 5 тестов, гороскоп и биоритмы, подписка, карточка по её макету.</a>
-  <a class="v2" href="2-konservativnoe.html"><b>2. Спокойный</b>Видение щупальца: 5 полей анкеты, 8 вопросов о семье, портрет, до 7 карточек с «где совпали» и «о чём поговорить».</a>
-  <a class="v3" href="3-ultra.html"><b>3. Ультра-мега</b>Кричащий: «Хватит свайпать. Пора жениться», свадьбометр, конфетти, «великолепная семёрка».</a>
+
+  <header class="hero">
+    <svg viewBox="0 0 200 150" aria-hidden="true">
+      <line x1="18" y1="134" x2="182" y2="134" stroke="#B9853A" stroke-width="4" stroke-linecap="round"/>
+      <path d="M30 70 L100 18 L170 70" fill="none" stroke="#8E2C48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M48 64 V128 H152 V64" fill="none" stroke="#8E2C48" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M100 118 C72 100 70 78 86 74 C94 72 99 77 100 82 C101 77 106 72 114 74 C130 78 128 100 100 118 Z" fill="#D9798D"/>
+    </svg>
+    <div class="kicker">версия 2</div>
+    <h1>«СемьЯ»</h1>
+    <p>Три взгляда на одну идею. Читается лёжа, с чаем, минут за десять.</p>
+    <div class="scroll">листайте вниз ↓</div>
+  </header>
+
+  <section class="ch">
+    <div class="ch-n">глава первая</div>
+    <h2>Здравствуйте!</h2>
+    <div class="bubble">Это NERV — электронные помощники, которые работают на Командора. Я щупальце, которое занимается только вашим проектом. Да, у нас тут осьминог, так исторически сложилось.</div>
+    <div class="bubble">Отдельный привет главной тестировщице! 👋 Ваша работа — тыкать во всё подряд и ругаться. Для этого справа внизу на каждой странице есть кнопка «Замечание».</div>
+    <div class="bubble">Мы нарисовали вашу идею тремя способами. Как три платья на одну фигуру: одно сшито по вашей выкройке, второе — спокойное, третье — для смелых.</div>
+  </section>
+
+  <section class="ch">
+    <div class="ch-n">глава вторая</div>
+    <h2>Идея в трёх картинках</h2>
+    <div class="panels">
+      <div class="panel"><i>📝</i>Человек честно отвечает про себя и семью</div>
+      <div class="panel"><i>🧮</i>Компьютер сравнивает с другими</div>
+      <div class="panel"><i>💌</i>До 7 человек, где совпадение больше 50%</div>
+    </div>
+    <p>Никаких свайпов и бесконечных лент. Главное — дети, деньги, родители и как мы ссоримся — выясняется ещё до первой встречи.</p>
+  </section>
+
+  <section class="ch">
+    <div class="ch-n">глава третья</div>
+    <h2>Три платья на одну фигуру</h2>
+    <p>В каждом окошке — живой макет, в нём можно нажимать прямо здесь. Люди в нём выдуманные.</p>
+
+    <div class="variant v-her">
+      <h3>1. По вашей выкройке</h3>
+      <p class="sub">Вот как я вижу ваш сервис, если делать точно по вашим документам: большая анкета с галочками «важно для меня», пять тестов, гороскоп и биоритмы, подписка. Карточки — как открытки.</p>
+      <div class="phone"><div class="screen"><iframe src="1-ee-videnie.html" title="Макет 1" loading="lazy"></iframe></div></div>
+      <div class="row"><a class="btn" href="1-ee-videnie.html">Открыть целиком</a><button class="btn ghost" data-note="Вариант 1 (по выкройке): ">Замечание</button></div>
+    </div>
+
+    <div class="variant v-calm">
+      <h3>2. Спокойный</h3>
+      <p class="sub">Вот как я вижу его так: анкета на пять полей, восемь вопросов о семье, «семейный портрет» и карточки, где сразу видно, в чём совпали и о чём поговорить. Ничего лишнего.</p>
+      <div class="phone"><div class="screen"><iframe src="2-konservativnoe.html" title="Макет 2" loading="lazy"></iframe></div></div>
+      <div class="row"><a class="btn" href="2-konservativnoe.html">Открыть целиком</a><button class="btn ghost" data-note="Вариант 2 (спокойный): ">Замечание</button></div>
+    </div>
+
+    <div class="variant v-ultra">
+      <h3>3. Для смелых</h3>
+      <p class="sub">А вот так — если хочется, чтобы о сервисе говорили: «Хватит свайпать. Пора жениться», свадьбометр и конфетти. Громко, но суть та же.</p>
+      <div class="phone"><div class="screen"><iframe src="3-ultra.html" title="Макет 3" loading="lazy"></iframe></div></div>
+      <div class="row"><a class="btn" href="3-ultra.html">Открыть целиком</a><button class="btn ghost" data-note="Вариант 3 (для смелых): ">Замечание</button></div>
+    </div>
+  </section>
+
+  <section class="ch">
+    <div class="ch-n">глава четвёртая</div>
+    <h2>А как назвать?</h2>
+    <p>Мы попросили отдельного помощника придумать три имени — по одному на каждое платье.</p>
+    <div class="name"><b>«СемьЯ»</b><i>«Не для свиданий. Для семьи.»</i>Ваше название — и, похоже, лучшее. В нём спрятана механика: «семь» и «я» — семь человек и вы. Можно так и нарисовать в логотипе.<small>Что проверить: слово общее, до запуска нужно проверить товарный знак и адрес сайта.</small></div>
+    <div class="name"><b>«Надолго»</b><i>«Не на вечер. Надолго.»</i>Спокойное современное имя из одного слова. Сразу ясно: не про свидание на вечер, а про жизнь вместе.<small>Что проверить: в названии нет слова «семья», это придётся объяснять слоганом. Запасной вариант, если «СемьЯ» занята.</small></div>
+    <div class="name"><b>«По расчёту»</b><i>«Мы считаем совместимость. Влюбляться — вам.»</i>Дерзкое: переворачивает «брак по расчёту». Расчёт тут — проценты совпадения, а не деньги.<small>Что проверить: многие сначала прочтут как «ищут богатых». Без слогана не работает.</small></div>
+    <button class="btn ghost" data-note="Про название: ">Сказать, какое ближе</button>
+  </section>
+
+  <section class="ch">
+    <div class="ch-n">глава пятая</div>
+    <h2>А теперь без мишуры</h2>
+    <p>Всё, что выше, — картинки. Вот конкретный план, шесть шагов.</p>
+
+    <div class="plan"><span class="L">А</span><b>Выбрать платье</b>Посмотреть три варианта и нажать «Замечание» везде, где что-то не так.<br><span class="who">делаете вы</span><span class="who">один-два вечера</span></div>
+    <div class="plan"><span class="L">Б</span><b>Созвониться</b>Уточнить, для кого сервис, где взять первых людей и какие тесты брать.<br><span class="who">вместе</span><span class="who">около часа</span></div>
+    <div class="plan"><span class="L">В</span><b>Собрать одну рабочую версию</b>По выбранному варианту, с вашими вопросами вместо наших.<br><span class="who us">делаем мы, один раз</span><span class="who">без обещания сроков</span></div>
+    <div class="plan"><span class="L">Г</span><b>Показать знакомым</b>10–20 человек проходят тест. Дошли до конца? Узнали себя? Захотели кому-то написать?<br><span class="who">делаете вы</span><span class="who">две-три недели</span></div>
+    <div class="plan"><span class="L">Д</span><b>Получить всё в руки</b>Ссылку, описание, вопросы и замечания — всё, чтобы любой разработчик понял идею.<br><span class="who us">передаём мы</span></div>
+    <div class="plan"><span class="L">Е</span><b>Решить, кто поведёт дальше</b>Разработчики, Сбер CoFounder или партнёр. Настоящему сайту понадобятся юрист по личным данным, люди для первой базы и проверка анкет.<br><span class="who">решаете вы</span></div>
+
+    <div class="frame-note">Честно и заранее: мы помогаем один раз, на старте — делаем рабочую версию, чтобы идею можно было показать. Вести проект постоянно не сможем.</div>
+  </section>
+
+  <section class="ch docs">
+    <div class="ch-n">глава шестая</div>
+    <h2>Провалиться глубже</h2>
+    <p>Для тех, кто любит подробности.</p>
+    <a href="docs/idea.html"><i>📖</i><div><b>Как мы поняли идею</b><span>ваша идея нашими словами</span></div></a>
+    <a href="docs/vision.html"><i>🔍</i><div><b>Взгляд со стороны</b><span>сильные места и острые углы</span></div></a>
+    <a href="docs/analogs.html"><i>🌍</i><div><b>Кто в мире пробовал похожее</b><span>что вышло у других и что взять</span></div></a>
+  </section>
+
+  <section class="ch pick">
+    <div class="ch-n">последняя глава</div>
+    <h2>Какое платье ближе?</h2>
+    <button class="btn" data-note="Мне ближе вариант 1 (по выкройке), потому что ">1. По вашей выкройке</button>
+    <button class="btn" data-note="Мне ближе вариант 2 (спокойный), потому что ">2. Спокойный</button>
+    <button class="btn" data-note="Мне ближе вариант 3 (для смелых), потому что ">3. Для смелых</button>
+    <button class="btn ghost" data-note="Хочу взять из разных вариантов вот что: ">Смешать из разных</button>
+    <p class="note">Ответ сохранится в «Замечаниях». Там же есть кнопка «Скачать все (Word)» — этот файл можно переслать.</p>
+  </section>
+
+  <p class="end">С уважением, NERV и щупальце «СемьЯ» 🐙<br><a href="v1/">Первая версия макетов</a></p>
 </div>
+<script>window.VARIANT = { id: 'istoriya', title: 'История «СемьЯ»' };</script>
+<script src="app.js"></script>
 </body>
 </html>

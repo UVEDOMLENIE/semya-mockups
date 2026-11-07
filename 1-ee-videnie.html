@@ -28,8 +28,21 @@
   .plan.best { border-color: var(--accent); }
   .plan span { color: var(--muted); font-size: 14px; }
   .stamp { display: inline-block; border: 2px solid #A23B3B; color: #A23B3B; padding: 2px 8px; transform: rotate(-3deg); font-size: 13px; margin-bottom: 10px; }
-  .card header { font-family: Georgia, serif; }
-  .card .lead { font-size: 13px; color: var(--muted); border-top: 0; }
+  .post { background: #FFFDF7; border: 1px solid var(--line); border-radius: 6px; padding: 22px 18px 18px; margin: 0 0 22px; text-align: center;
+          box-shadow: 0 1px 0 #fff inset, 0 10px 22px rgba(35,64,122,.10); position: relative; }
+  .post::before { content: ""; position: absolute; inset: 7px; border: 1.5px solid #E6DCC6; border-radius: 3px; pointer-events: none; }
+  .post-frame { position: relative; width: 92px; margin: 0 auto 10px; }
+  .post-photo { width: 92px; height: 92px; border-radius: 50%; background: linear-gradient(135deg, #DCE4F2, #F3E5D6); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--accent);
+                display: flex; align-items: center; justify-content: center; font-size: 40px; color: var(--accent); }
+  .post-seal { position: absolute; right: -22px; bottom: -4px; width: 50px; height: 50px; border-radius: 50%; background: #A23B3B; color: #fff; font-weight: 700;
+               display: flex; align-items: center; justify-content: center; font-size: 15px; transform: rotate(-8deg); box-shadow: 0 3px 8px rgba(0,0,0,.2); }
+  .post h3 { margin: 4px 0 0; font-size: 26px; color: var(--accent); }
+  .post-lead { margin: 2px 0 10px; font-size: 13px; color: var(--muted); }
+  .post-quote { font-style: italic; font-size: 19px; color: #A23B3B; margin: 8px 6px 12px; }
+  .post-facts { font-size: 15px; color: var(--ink); margin: 0 0 8px; }
+  .post-about { font-size: 15px; color: var(--muted); margin: 0 0 12px; }
+  .post-btns { display: flex; gap: 8px; justify-content: center; }
+  .post-btns span { border: 1.5px solid var(--accent); color: var(--accent); border-radius: 99px; padding: 6px 14px; font-size: 14px; }
 </style>
 </head>
 <body>
@@ -132,12 +145,14 @@
   window.VARIANT = {
     id: 'ee-videnie', title: 'Её видение',
     quizMeta: (i, n, t) => `Тест «Совпадение ценностей» · вопрос ${i + 1} из ${n}`,
-    card: (p, m, i, esc) => `<article class="card"><header><b>${esc(p.name)}</b><span class="pct">${m.pct}%</span></header>
-      <p class="lead">Близость жизненных принципов и убеждений, совпадение базовых ценностей, психологической гибкости и физиологической гармонии с вами составляет ${m.pct}%</p>
-      <p class="fam">«${esc(p.fam)}»</p>
-      <p><span>Год рождения:</span> ${p.year}</p><p><span>Регион проживания:</span> ${esc(p.region)}</p>
-      <p><span>Род занятий:</span> ${esc(p.job)}</p><p><span>Семейный статус:</span> ${esc(p.status)}</p>
-      <p><span>Коротко о себе:</span> ${esc(p.about)}</p><p><span>Контакты:</span> WhatsApp, телефон</p></article>`,
+    card: (p, m, i, esc) => `<article class="post">
+      <div class="post-frame"><div class="post-photo">${esc(p.name[0])}</div><div class="post-seal">${m.pct}%</div></div>
+      <h3>${esc(p.name)}</h3>
+      <p class="post-lead">близость жизненных принципов, ценностей и гармонии с вами</p>
+      <p class="post-quote">«${esc(p.fam)}»</p>
+      <p class="post-facts">${p.year} г. р. · ${esc(p.region)}<br>${esc(p.job)} · ${esc(p.status)}</p>
+      <p class="post-about">${esc(p.about)}</p>
+      <div class="post-btns"><span>💬 WhatsApp</span><span>📞 Телефон</span></div></article>`,
   };
 </script>
 <script src="app.js"></script>

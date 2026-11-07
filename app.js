@@ -121,14 +121,17 @@
     if (V.afterCards) V.afterCards(box, list, api);
   }
 
+  /* Карточка человека: портрет-инициал, кольцо совпадения, цитата, метки. Без «таблицы». */
   function defaultCard(p, m) {
-    return `<article class="card"><header><b>${esc(p.name)}</b><span class="pct">${m.pct}%</span></header>
-      <p class="fam">«${esc(p.fam)}»</p>
-      <p><span>Год рождения:</span> ${p.year}</p><p><span>Регион:</span> ${esc(p.region)}</p>
-      <p><span>Род занятий:</span> ${esc(p.job)}</p><p><span>Семейный статус:</span> ${esc(p.status)}</p>
-      <p><span>О себе:</span> ${esc(p.about)}</p>
-      ${m.same.length ? `<p class="same"><span>Где совпали:</span> ${m.same.join(', ')}</p>` : ''}
-      ${m.talk.length ? `<p class="talk"><span>О чём поговорить:</span> ${m.talk.join(', ')}</p>` : ''}
+    return `<article class="pcard">
+      <div class="pc-top"><div class="ava">${esc(p.name[0])}</div>
+        <div class="pc-who"><b>${esc(p.name)}, ${2026 - p.year}</b><small>${esc(p.region)} · ${esc(p.job)}</small></div>
+        <div class="ring" style="--p:${m.pct}"><span>${m.pct}%</span></div></div>
+      <blockquote>«${esc(p.fam)}»</blockquote>
+      <p class="pc-about">${esc(p.about)}</p>
+      <div class="chips"><span>${esc(p.status)}</span></div>
+      <div class="chips">${m.same.map((t) => `<span class="ok">✓ ${t}</span>`).join('')}${m.talk.map((t) => `<span class="talk">💬 ${t}</span>`).join('')}</div>
+      ${m.talk.length ? `<p class="pc-hint">💬 — об этом стоит поговорить при встрече</p>` : ''}
     </article>`;
   }
 
@@ -141,25 +144,26 @@
       <textarea rows="5"></textarea><div class="bug-row"><button data-save>Сохранить</button><button data-dl>Скачать все (Word)</button><button data-x>Закрыть</button></div>
       <p class="bug-count"></p></div>`;
     document.body.append(btn, dlg);
-    const key = 'semya-notes-' + (V.id || 'x');
+    const key = 'semya-notes';
     const load = () => { try { return JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) { return []; } };
     const save = (l) => { try { localStorage.setItem(key, JSON.stringify(l)); } catch (e) {} };
     const count = () => { $('.bug-count', dlg).textContent = 'Сохранено замечаний: ' + load().length; };
     btn.onclick = () => { dlg.classList.add('on'); count(); $('textarea', dlg).focus(); };
+    api.note = (prefix) => { dlg.classList.add('on'); count(); const ta = $('textarea', dlg); ta.value = prefix || ''; ta.focus(); };
     $('[data-x]', dlg).onclick = () => dlg.classList.remove('on');
     $('[data-save]', dlg).onclick = () => {
       const t = $('textarea', dlg).value.trim(); if (!t) return;
       const screen = ($('[data-screen].on') || {}).dataset?.screen || '';
-      const l = load(); l.push({ t, screen, at: new Date().toLocaleString('ru-RU') }); save(l);
+      const l = load(); l.push({ t, screen: (V.title || '') + (screen ? ' / ' + screen : ''), at: new Date().toLocaleString('ru-RU') }); save(l);
       $('textarea', dlg).value = ''; count();
     };
     $('[data-dl]', dlg).onclick = () => {
       const l = load();
-      const html = `<html><head><meta charset="utf-8"></head><body style="font-family:Arial;font-size:14pt"><h1>Замечания — макет «${esc(V.title || 'СемьЯ')}»</h1>` +
+      const html = `<html><head><meta charset="utf-8"></head><body style="font-family:Arial;font-size:14pt"><h1>Замечания — «СемьЯ»</h1>` +
         l.map((n, i) => `<p><b>${i + 1}.</b> ${esc(n.at)}, экран «${esc(n.screen)}»<br>${esc(n.t)}</p>`).join('') + '</body></html>';
       const a = document.createElement('a');
       a.href = URL.createObjectURL(new Blob(['﻿' + html], { type: 'application/msword' }));
-      a.download = 'zamechaniya-' + (V.id || 'maket') + '.doc'; a.click();
+      a.download = 'zamechaniya-semya.doc'; a.click();
     };
   }
 
@@ -168,8 +172,9 @@
 
   document.addEventListener('click', (e) => {
     const g = e.target.closest('[data-go]'); if (g) { e.preventDefault(); go(g.dataset.go); }
+    const n = e.target.closest('[data-note]'); if (n && api.note) { e.preventDefault(); api.note(n.dataset.note); }
     const s = e.target.closest('[data-gender]');
     if (s) { state.gender = s.dataset.gender; $$('[data-gender]').forEach((b) => b.classList.toggle('sel', b === s)); }
   });
-  document.addEventListener('DOMContentLoaded', () => { bugButton(); go(($('[data-screen]') || {}).dataset?.screen); });
+  document.addEventListener('DOMContentLoaded', () => { bugButton(); const first = $('[data-screen]'); if (first) go(first.dataset.screen); });
 })();
